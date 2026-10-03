@@ -6,7 +6,7 @@
 <title>Мій день — планувальник</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&family=Caveat:wght@500;700display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -162,23 +162,22 @@ html[data-theme="nature"] .btn-primary:hover{background:var(--rust-ink);}
 html[data-theme="nature"] .modal{border-radius:20px;}
 html[data-theme="nature"] .footer-note{position:relative; padding-top:22px;}
 html[data-theme="nature"] .footer-note::before{content:"⛰"; position:absolute; top:0; left:50%; transform:translateX(-50%); font-size:16px; opacity:.45; color:var(--ink-faint);}
-/* ============ SKETCH THEME (шарж, мінімалізм) ============ */
+/* ============ SKETCH THEME (олівцевий ескіз) ============ */
 html[data-theme="sketch"]{
   --serif: 'Caveat', 'Comic Sans MS', cursive;
-  --bg: #F6F3EA; --bg-soft: #ECE8DB; --surface: #FFFFFF; --surface-2: #FBF8EE;
-  --ink: #1E1E1E; --ink-soft: #4A4A4A; --ink-faint: #8A867A; --line: #1E1E1E;
-  --rust: #E5484D; --rust-ink: #B42A30; --moss: #2F9E6B; --moss-soft: #DDF2E7;
-  --plum: #3B3B3B; --gold: #FFD43B;
-  --shadow: 3px 3px 0 var(--ink);
-  --radius: 16px 22px 14px 24px / 22px 14px 24px 16px;
-  --radius-sm: 10px 14px 9px 15px / 14px 9px 15px 10px;
+  --bg: #F3F2ED; --bg-soft: #E8E8E2; --surface: #FCFBF7; --surface-2: #F2F2EC;
+  --ink: #414641; --ink-soft: #62675F; --ink-faint: #858980; --line: #969B90;
+  --rust: #536E80; --rust-ink: #3F596A; --moss: #738365; --moss-soft: #E6EBDD;
+  --plum: #85788D; --gold: #DDD3BA;
+  --shadow: 1px 2px 0 -1px rgba(65,70,65,.24), 3px 5px 0 -2px rgba(65,70,65,.09), 0 8px 20px -15px rgba(65,70,65,.22);
+  --radius: 18px 13px 20px 12px / 12px 19px 13px 18px;
+  --radius-sm: 8px 12px 7px 11px / 11px 7px 12px 8px;
 }
-/* зошит у клітинку/лінійку */
+/* Папір із дрібним зерном та ледь помітними олівцевими лініями. */
 html[data-theme="sketch"] body{
-  background-image: linear-gradient(rgba(30,30,30,.07) 1px, transparent 1px);
-  background-size: 100% 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23414641' opacity='.065' filter='url(%23grain)' d='M0 0h180v180H0z'/%3E%3C/svg%3E"), linear-gradient(rgba(83,110,128,.045) 1px, transparent 1px);
+  background-size: 180px 180px, 100% 32px;
 }
-/* контури-«маркер» */
 html[data-theme="sketch"] .icon-btn,
 html[data-theme="sketch"] .day-nav button,
 html[data-theme="sketch"] .panel,
@@ -195,77 +194,83 @@ html[data-theme="sketch"] .opt-card,
 html[data-theme="sketch"] .end-day-btn,
 html[data-theme="sketch"] .toast,
 html[data-theme="sketch"] .progress{
-  border-width:2px; border-style:solid; border-color:var(--ink) !important;
+  border:1px solid var(--line); border-radius:var(--radius-sm);
+  background-image:repeating-linear-gradient(128deg, transparent 0 3px, rgba(65,70,65,.025) 3px 4px);
+  box-shadow:var(--shadow);
 }
-html[data-theme="sketch"] .time-pop{
-  border-width:2px 2px 0 2px; border-style:solid; border-color:var(--ink) !important;
+html[data-theme="sketch"] .panel,
+html[data-theme="sketch"] .strip,
+html[data-theme="sketch"] .modal{border-radius:var(--radius); outline:1px solid rgba(65,70,65,.13); outline-offset:2px;}
+html[data-theme="sketch"] .modal{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23414641' opacity='.05' filter='url(%23grain)' d='M0 0h180v180H0z'/%3E%3C/svg%3E");
+  box-shadow:var(--shadow), 0 18px 48px -24px rgba(65,70,65,.32);
 }
+html[data-theme="sketch"] .time-pop{border:1px solid var(--line); border-bottom:0; box-shadow:var(--shadow);}
 html[data-theme="sketch"] .icon-btn,
-html[data-theme="sketch"] .day-nav button,
-html[data-theme="sketch"] .btn,
-html[data-theme="sketch"] .quick-submit,
-html[data-theme="sketch"] .end-day-btn{ box-shadow:3px 3px 0 var(--ink); }
+html[data-theme="sketch"] .day-nav button{background-color:var(--surface);}
 html[data-theme="sketch"] .icon-btn:hover,
-html[data-theme="sketch"] .end-day-btn:hover{ transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--ink); }
+html[data-theme="sketch"] .end-day-btn:hover{transform:rotate(-1deg); border-color:var(--rust);}
 html[data-theme="sketch"] .icon-btn:active,
 html[data-theme="sketch"] .day-nav button:active,
 html[data-theme="sketch"] .btn:active,
 html[data-theme="sketch"] .quick-submit:active,
-html[data-theme="sketch"] .end-day-btn:active{ transform:translate(2px,2px); box-shadow:none; }
-html[data-theme="sketch"] .modal{ box-shadow:6px 6px 0 var(--ink); }
-html[data-theme="sketch"] .month-cell{ border-radius:var(--radius-sm); }
-html[data-theme="sketch"] .quick-input{ border-radius:var(--radius-sm); background:var(--surface-2); }
-html[data-theme="sketch"] .chk{ border-radius:7px 9px 6px 10px / 9px 6px 10px 7px; }
-html[data-theme="sketch"] .progress{ height:10px; background:var(--surface); }
-html[data-theme="sketch"] .progress i{ background:var(--moss); border-right:2px solid var(--ink); }
-
-/* шрифт «від руки» (Caveat дрібний — збільшуємо) */
-html[data-theme="sketch"] .brand .word{ font-size:clamp(30px,7.5vw,38px); font-weight:700; }
-html[data-theme="sketch"] .brand .word em{ font-style:normal; color:var(--ink); font-weight:700; }
+html[data-theme="sketch"] .end-day-btn:active{transform:translateY(1px); box-shadow:none;}
+html[data-theme="sketch"] .quick-input{background-color:var(--surface-2); box-shadow:inset 1px 1px 2px rgba(65,70,65,.07);}
+html[data-theme="sketch"] .chk{border-radius:5px 8px 4px 7px / 7px 4px 8px 5px; box-shadow:1px 1px 0 rgba(65,70,65,.12);}
+html[data-theme="sketch"] .progress{height:8px; background-color:var(--surface-2); box-shadow:none;}
+html[data-theme="sketch"] .progress i{
+  background:repeating-linear-gradient(128deg, rgba(252,251,247,.3) 0 1px, transparent 1px 3px), var(--moss);
+  border-right:1px solid var(--ink-soft);
+}
+/* Рукописні заголовки та нерівні, легкі штрихи. */
+html[data-theme="sketch"] .brand .word{font-size:clamp(32px,7.5vw,40px); font-weight:700; text-shadow:.4px .5px 0 rgba(65,70,65,.2);}
+html[data-theme="sketch"] .brand .word em{font-style:normal; color:var(--ink); font-weight:700;}
 html[data-theme="sketch"] .brand .word::after{
-  content:""; display:block; height:9px; width:62%; margin:0 auto;
-  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 8' preserveAspectRatio='none' fill='none' stroke='%23E5484D' stroke-width='2.5' stroke-linecap='round'><path d='M2 5c6-5 10 3 16-1s10 3 16-1 10 3 16-1 6 1 8 0'/></svg>") center/100% 100% no-repeat;
+  content:""; display:block; height:8px; width:76%; margin:0 auto;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 140 8' fill='none' stroke='%23536E80' stroke-linecap='round'%3E%3Cpath d='M3 5Q44 1 136 3M7 7Q61 3 131 5' opacity='.6'/%3E%3Cpath d='M16 4Q66 2 126 3' stroke-width='.6' opacity='.5'/%3E%3C/svg%3E") center/100% 100% no-repeat;
 }
 html[data-theme="sketch"] .day-head h2,
-html[data-theme="sketch"] .month-head h2{ font-size:clamp(26px,6vw,32px); font-weight:700; }
-html[data-theme="sketch"] .modal h3{ font-size:27px; font-weight:700; }
-html[data-theme="sketch"] .event-time{ font-size:18px; font-weight:700; width:54px; }
-html[data-theme="sketch"] .week-day .wd-num{ font-size:26px; font-weight:700; }
-html[data-theme="sketch"] .tab{ font-family:var(--serif); font-size:17px; font-weight:700; color:var(--ink-soft); }
-html[data-theme="sketch"] .tab.active{ background:var(--gold); color:var(--ink); box-shadow:none; border:2px solid var(--ink); }
-
-/* блок з цитатою + обличчя-дудл */
+html[data-theme="sketch"] .month-head h2{font-size:clamp(27px,6vw,33px); font-weight:700;}
+html[data-theme="sketch"] .modal h3{font-size:29px; font-weight:700;}
+html[data-theme="sketch"] .panel-head h3{font-family:var(--serif); font-size:22px;}
+html[data-theme="sketch"] .event-time{font-size:18px; font-weight:700; width:54px;}
+html[data-theme="sketch"] .week-day .wd-num{font-size:26px; font-weight:700;}
+html[data-theme="sketch"] .tab{font-family:var(--serif); font-size:19px; font-weight:700; color:var(--ink-soft); border-radius:var(--radius-sm);}
+html[data-theme="sketch"] .tab.active{
+  background:repeating-linear-gradient(128deg, transparent 0 3px, rgba(83,110,128,.09) 3px 4px), #E4EBEF;
+  color:var(--rust-ink); box-shadow:none; outline:1px solid rgba(83,110,128,.35); outline-offset:-2px;
+}
 html[data-theme="sketch"] .strip-top{
-  background:var(--surface); color:var(--ink); position:relative; padding-right:74px;
+  background-color:var(--surface); color:var(--ink); position:relative; padding-right:68px;
+  background-image:repeating-linear-gradient(128deg, transparent 0 4px, rgba(65,70,65,.025) 4px 5px);
 }
 html[data-theme="sketch"] .strip-top::after{
-  content:""; position:absolute; right:14px; bottom:10px; width:46px; height:46px;
-  transform:rotate(-8deg);
-  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='%231E1E1E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M24 5c11 0 19 8 19 19s-8 19-19 19S5 35 5 24 13 5 24 5z' fill='%23FFD43B'/><path d='M16 20h.01M32 18h.01' stroke-width='4.5'/><path d='M15 30c5 6 13 6 18 0'/><path d='M22 22c-2 5 0 6 3 5'/></svg>") center/contain no-repeat;
+  content:""; position:absolute; right:14px; bottom:13px; width:42px; height:54px; transform:rotate(9deg);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 54' fill='none' stroke='%2362675F' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m10 38 18-29 8 5-18 29-10 5z' fill='%23DDD3BA' fill-opacity='.45'/%3E%3Cpath d='m10 38 8 5-10 5zM13 40 31 11M16 42 34 13M28 9l2-3q1-2 3-1l5 3q2 1 0 4l-2 2M8 48l3-2M5 51q10-4 27-2'/%3E%3Cpath d='m9 38 18-29m-8 35 18-30M7 52q13-3 27-2' opacity='.3' stroke-width='.7'/%3E%3C/svg%3E") center/contain no-repeat;
 }
-html[data-theme="sketch"] .strip .quote{ font-style:normal; font-weight:500; font-size:clamp(19px,4.6vw,22px); line-height:1.25; }
-html[data-theme="sketch"] .strip .mark{ color:var(--rust); opacity:1; font-weight:700; font-size:40px; }
-html[data-theme="sketch"] .strip .cite{ color:var(--rust-ink); opacity:1; font-weight:700; font-size:17px; font-family:var(--serif); }
-
-/* кнопки, виділення */
-html[data-theme="sketch"] .quick-submit{ background:var(--rust); color:#fff; }
-html[data-theme="sketch"] .quick-submit:hover{ background:var(--rust-ink); }
-html[data-theme="sketch"] .btn-primary{ background:var(--rust); color:#fff; }
-html[data-theme="sketch"] .btn-primary:hover{ background:var(--rust-ink); }
-html[data-theme="sketch"] .opt-card.active{ background:var(--gold); color:var(--ink); }
-html[data-theme="sketch"] .end-day-btn{ background:var(--gold); color:var(--ink); font-family:var(--serif); font-size:22px; }
-html[data-theme="sketch"] .chk.done{ background:var(--moss); border-color:var(--ink) !important; }
-html[data-theme="sketch"] .item-text.done{ text-decoration-thickness:2px; text-decoration-color:var(--rust); }
+html[data-theme="sketch"] .strip .quote{font-style:normal; font-weight:500; font-size:clamp(21px,4.6vw,24px); line-height:1.35;}
+html[data-theme="sketch"] .strip .mark{color:var(--moss); opacity:.8; font-weight:700; font-size:40px;}
+html[data-theme="sketch"] .strip .cite{color:var(--rust-ink); opacity:1; font-weight:700; font-size:18px; font-family:var(--serif);}
+/* Приглушені кольорові олівці замість коміксових заливок. */
+html[data-theme="sketch"] .quick-submit,
+html[data-theme="sketch"] .btn-primary{background-color:#E4EBEF; color:var(--rust-ink); border-color:#889BA8;}
+html[data-theme="sketch"] .quick-submit:hover,
+html[data-theme="sketch"] .btn-primary:hover{background-color:#D5E0E7;}
+html[data-theme="sketch"] .opt-card{background-color:var(--surface-2);}
+html[data-theme="sketch"] .opt-card.active{background-color:var(--moss-soft); color:#4E6142; border-color:var(--moss); outline:1px solid rgba(115,131,101,.3); outline-offset:2px;}
+html[data-theme="sketch"] .end-day-btn{background-color:#ECE6D8; color:var(--ink); font-family:var(--serif); font-size:23px;}
+html[data-theme="sketch"] .chk.done{background-color:var(--moss); border-color:var(--moss);}
+html[data-theme="sketch"] .item-text.done{text-decoration-thickness:1px; text-decoration-color:var(--ink-soft);}
 html[data-theme="sketch"] .week-day.today,
-html[data-theme="sketch"] .month-cell.today{ background:#FFF3B0; box-shadow:2px 2px 0 var(--rust); }
+html[data-theme="sketch"] .month-cell.today{background-color:var(--moss-soft); border-color:var(--moss);}
 html[data-theme="sketch"] .week-day:hover,
-html[data-theme="sketch"] .month-cell:hover{ border-color:var(--rust) !important; }
-html[data-theme="sketch"] .wd-item.evt{ border-left-color:var(--rust); }
-html[data-theme="sketch"] .m-dot{ background:var(--moss); }
-html[data-theme="sketch"] .m-dot.evt{ background:var(--rust); }
+html[data-theme="sketch"] .month-cell:hover{border-color:var(--rust);}
+html[data-theme="sketch"] .wd-item.evt{border-left-color:var(--rust);}
+html[data-theme="sketch"] .m-dot{background:var(--moss);}
+html[data-theme="sketch"] .m-dot.evt{background:var(--rust);}
 html[data-theme="sketch"] .time-pop .seg button.active,
-html[data-theme="sketch"] .time-pop .btn-sm{ background:var(--rust); border-color:var(--ink); color:#fff; }
-html[data-theme="sketch"] .time-select{ border:2px solid var(--ink); border-radius:var(--radius-sm); }
+html[data-theme="sketch"] .time-pop .btn-sm{background:#E4EBEF; border-color:#889BA8; color:var(--rust-ink);}
+html[data-theme="sketch"] .time-select{border:1px solid var(--line); border-radius:var(--radius-sm);}
 *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
 html,body{height:100%;}
 body{
@@ -491,6 +496,13 @@ html[data-theme="dark"] .btn-primary{color:#0F141C;}
 .field label{display:block; font-size:12.5px; color:var(--ink-soft); margin-bottom:6px; font-weight:600;}
 .opt-card{ flex:1; min-width:90px; border:1.5px solid var(--line); border-radius:11px; padding:10px; cursor:pointer; text-align:center; background:var(--bg-soft); font-size:12.5px; color:var(--ink-soft); font-weight:600; }
 .opt-card.active{border-color:var(--rust); color:var(--rust-ink); background:var(--surface);}
+.theme-options{display:grid; grid-template-columns:repeat(2,minmax(0,1fr));}
+.theme-options .opt-card{min-width:0;}
+.theme-options [data-theme-opt="nature"]{grid-column:1 / -1;}
+#settingsOverlay .backup-icon{width:19px; height:19px; flex-shrink:0; vertical-align:middle; margin-right:5px;}
+#settingsOverlay .backup-label{display:flex; align-items:center;}
+html[data-theme="sketch"] #settingsOverlay .backup-icon{stroke-width:1.3; transform:rotate(-3deg);}
+html[data-theme="marvel"] #settingsOverlay .backup-icon{stroke-width:2.2;}
 .swatch-row{display:flex; gap:5px; justify-content:center; margin-bottom:6px;}
 .swatch{width:14px; height:14px; border-radius:50%;}
 
@@ -677,7 +689,11 @@ html[data-theme="dark"] .move-pop button{color:#0F141C;}
     </div>
     <div class="field">
       <label data-i18n="themeLabel">Тема</label>
-      <div class="opt-row">
+      <div class="opt-row theme-options">
+        <div class="opt-card" data-theme-opt="nature">
+          <div class="swatch-row"><span class="swatch" style="background:#F4EEDF"></span><span class="swatch" style="background:#2F5D3E"></span></div>
+          <span data-i18n="themeNature">Природа</span>
+        </div>
         <div class="opt-card" data-theme-opt="light">
           <div class="swatch-row"><span class="swatch" style="background:#EFE6D8"></span><span class="swatch" style="background:#B3502B"></span></div>
           <span data-i18n="themeLight">Світла</span>
@@ -686,17 +702,13 @@ html[data-theme="dark"] .move-pop button{color:#0F141C;}
           <div class="swatch-row"><span class="swatch" style="background:#0F141C"></span><span class="swatch" style="background:#C4AA82"></span></div>
           <span data-i18n="themeDark">Темна</span>
         </div>
-        <div class="opt-card" data-theme-opt="sketch">
-  <div class="swatch-row"><span class="swatch" style="background:#FFD43B;border:1.5px solid #1E1E1E"></span><span class="swatch" style="background:#E5484D;border:1.5px solid #1E1E1E"></span></div>
-  <span data-i18n="themeSketch">Шарж</span>
-</div>
         <div class="opt-card" data-theme-opt="marvel">
           <div class="swatch-row"><span class="swatch" style="background:#151316"></span><span class="swatch" style="background:#ED1D24"></span></div>
           <span data-i18n="themeMarvel">Marvel</span>
         </div>
-        <div class="opt-card" data-theme-opt="nature">
-          <div class="swatch-row"><span class="swatch" style="background:#F4EEDF"></span><span class="swatch" style="background:#2F5D3E"></span></div>
-          <span data-i18n="themeNature">Природа</span>
+        <div class="opt-card" data-theme-opt="sketch">
+          <div class="swatch-row"><span class="swatch" style="background:#F3F2ED;border:1px solid #969B90"></span><span class="swatch" style="background:#536E80;border:1px solid #969B90"></span></div>
+          <span data-i18n="themeSketch">sketch</span>
         </div>
       </div>
     </div>
@@ -709,10 +721,10 @@ html[data-theme="dark"] .move-pop button{color:#0F141C;}
       </div>
     </div>
     <div class="field">
-      <label>Резервна копія</label>
+      <label class="backup-label"><svg class="backup-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7H4V3"/><path d="M4 7a9 9 0 1 1-1 8"/><path d="M12 7v5l3 2"/></svg> Резервна копія</label>
       <div class="opt-row">
-        <div class="opt-card" id="exportBtn">⬇️ Експорт</div>
-        <div class="opt-card" id="importBtn">⬆️ Імпорт</div>
+        <div class="opt-card" id="exportBtn"><svg class="backup-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 15v5h16v-5"/></svg> Експорт</div>
+        <div class="opt-card" id="importBtn"><svg class="backup-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3m-4 4 4-4 4 4M4 15v5h16v-5"/></svg> Імпорт</div>
       </div>
       <input type="file" id="importFile" accept="application/json" hidden>
     </div>
@@ -780,7 +792,7 @@ const I18N = {
     cancel:"Скасувати", save:"Зберегти", done:"Готово",
     settingsTitle:"Налаштування", langLabel:"Мова", themeLabel:"Тема",
     quoteSourceLabel:"Цитата дня", quoteSourceBible:"Біблія", quoteSourceMotiv:"Мотиватор",
-    themeLight:"Світла", themeDark:"Темна", themeGray:"Шарж", themeMarvel:"Marvel", themeNature:"Природа",
+    themeLight:"Світла", themeDark:"Темна", themeSketch:"sketch", themeMarvel:"Marvel", themeNature:"Природа",
     soundLabel:"Звук нагадування", soundChime:"М'який дзвіночок", soundBell:"Дзвін", soundOff:"Без звуку",
     footerNote:"Дані зберігаються лише у вашому браузері, на цьому пристрої.",
     emptyPlan:"На цей день ще нічого не заплановано.",
@@ -815,7 +827,7 @@ const I18N = {
     cancel:"Cancel", save:"Save", done:"Done",
     settingsTitle:"Settings", langLabel:"Language", themeLabel:"Theme",
     quoteSourceLabel:"Quote of the day", quoteSourceBible:"Bible", quoteSourceMotiv:"Motivator",
-    themeLight:"Light", themeDark:"Dark", themeGray:"Sketch", themeMarvel:"Marvel", themeNature:"Nature",
+    themeLight:"Light", themeDark:"Dark", themeSketch:"sketch", themeMarvel:"Marvel", themeNature:"Nature",
     soundLabel:"Reminder sound", soundChime:"Soft chime", soundBell:"Bell", soundOff:"No sound",
     footerNote:"Your data stays only in this browser, on this device.",
     emptyPlan:"Nothing planned for this day yet.",
